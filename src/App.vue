@@ -17,7 +17,7 @@
             <button class="btn btn-outline-primary">{{ user.email }}</button>
           </li>
           <li class="nav-item" v-if="user">
-            <a class="nav-link pl-3" v-on:click="logout">Logout</a>
+            <a class="nav-link link pl-3" v-on:click="logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -51,11 +51,16 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      this.$router.push('login');
+      this.$store.commit('removeUser');
+      this.$router.push({ name: 'login' });
     }
   }
 }
   
 </script>
+<style scoped>
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+</style>

@@ -13,10 +13,14 @@ const store = new Vuex.Store({
       state.user = payload.user;
       localStorage.setItem('token', payload.token);
       localStorage.setItem('user', JSON.stringify(payload.user));
-      console.log(state);
     },
     reloadUser(state, payload) {
       state.user = payload.user;
+    },
+    removeUser(state) {
+      state.user = null;
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
     }
   },
 });
