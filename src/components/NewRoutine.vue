@@ -17,7 +17,7 @@
         type="button"
         class="btn btn-dark btn-lg btn-block mb-2 mt-2"
         v-on:click="addTask"
-        v-if="showAddTask && disabled === false"
+        v-if="showAddTask"
       >
         {{ tasks.length === 0 ? 'Add Task' : 'Add Another Task' }}
       </button>
@@ -25,9 +25,9 @@
         type="button"
         class="btn btn-dark btn-lg btn-block"
         v-on:click="saveRoutine"
-        v-if="tasks.length > 0 && disabled === false"
+        v-if="tasks.length > 0"
       >
-        Save Routine
+        {{ disabled === true ? 'Update Routine': 'Save Routine' }}
       </button>
       <button
         type="button"
@@ -90,14 +90,25 @@ export default {
         this.message = 'Empty values not allowed';
         return;
       }
-      api
-        .saveRoutine({ name: this.name, tasks: this.tasks })
-        .then(() => {
-          this.$router.push('/routine');
-        })
-        .catch(({ response }) => {
-          this.message = response.data.message;
-        });
+      if (this.routine) {
+         api
+          .updateRoutine(this.routine.id, { name: this.name, tasks: this.tasks })
+          .then(() => {
+            this.$router.push('/routine');
+          })
+          .catch(({ response }) => {
+            this.message = response.data.message;
+          });
+      } else {
+        api
+          .saveRoutine({ name: this.name, tasks: this.tasks })
+          .then(() => {
+            this.$router.push('/routine');
+          })
+          .catch(({ response }) => {
+            this.message = response.data.message;
+          });
+      }
     },
   },
 };

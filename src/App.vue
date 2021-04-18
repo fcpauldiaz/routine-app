@@ -58,9 +58,34 @@ export default {
 }
   
 </script>
-<style scoped>
+<style>
 .link:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+.tltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.tltip:hover .tooltiptext {
+  visibility: visible;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
 }
 </style>

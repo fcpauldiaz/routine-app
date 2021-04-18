@@ -2,7 +2,8 @@
   <div>
     <div v-for="(routine, index) in routines" v-bind:key="routine.id">
       <h5 class="inline">Routine {{ index + 1 }}</h5>
-      <button type="button" class="btn btn-sm inline outline-red mb-2" v-on:click="deleteRoutine(routine)">
+      <button type="button" class="btn btn-sm inline outline-red mb-2 tltip" v-on:click="deleteRoutine(routine)">
+        <span class="tooltiptext">Delete</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -19,7 +20,8 @@
           ></path>
         </svg>
       </button>
-       <button type="button" class="btn btn-sm inline outline-blue mb-2" v-on:click="viewRoutine(routine)">
+       <button type="button" class="btn btn-sm inline outline-blue mb-2 tltip" v-on:click="viewRoutine(routine)">
+        <span class="tooltiptext">Edit</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
           <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
           <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
@@ -72,4 +74,30 @@ export default {
 .outline-blue {
   color: blue;
 }
+.tltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+.tltip:hover .tooltiptext {
+  visibility: visible;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
 </style>

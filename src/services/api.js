@@ -36,5 +36,12 @@ export default {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
+  },
+  updateRoutine(routineId, task) {
+    return axios.post(`${base_url}/routine/${routineId}/task/`, task, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
   }
 };

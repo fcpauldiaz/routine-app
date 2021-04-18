@@ -8,8 +8,11 @@
       <label>Type</label>
       <input type="type" v-model="type" class="form-control form-control-lg" />
     </div>
+    <div class="form-group" v-if="message">
+      <label>{{ message }}</label>
+    </div>
     <button
-      type="submit"
+      type="button"
       v-on:click="saveTask"
       class="btn btn-dark btn-lg btn-block mb-2"
     >
@@ -23,9 +26,14 @@ export default {
   data: () => ({
     type: null,
     time: null,
+    message: null,
   }),
   methods: {
     saveTask() {
+      if (!this.time || !this.type) {
+        this.message = "Values are required";
+        return;
+      }
       this.$emit('saveTask', { time: this.time, type: this.type });
     },
   },

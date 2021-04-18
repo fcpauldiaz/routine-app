@@ -2,7 +2,8 @@
   <div>
     <div v-for="(task, index) in tasks" :key="index">
       <h5 class="inline">Task {{ index + 1 }}</h5>
-      <button type="button" class="btn btn-sm inline outline-red mb-2" v-on:click="removeTask(task, index)">
+      <button type="button" class="btn btn-sm inline outline-red mb-2 tltip" v-on:click="removeTask(task, index)">
+        <span class="tooltiptext">Delete</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
