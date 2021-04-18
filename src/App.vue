@@ -42,6 +42,13 @@ export default {
       return this.$store.state.user;
     }
   },
+  mounted() {
+    let user = localStorage.getItem('user');
+    if (user) {
+      user = JSON.parse(user);
+      this.$store.commit('reloadUser', { user });
+    }
+  },
   methods: {
     logout() {
       localStorage.removeItem('user');

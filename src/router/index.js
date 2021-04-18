@@ -21,13 +21,19 @@ Vue.use(VueRouter)
   },
   {
     path: '/routine',
-    name: 'routine',
+    name: 'routine-main',
     component: () => import('../components/RoutineListContainer.vue')
   },
   {
     path: '/routine/create',
     name: 'new-routine',
     component: () => import('../components/NewRoutine.vue') 
+  },
+  {
+    path: '/routine/view/:id',
+    name: 'view-routine',
+    props: true,
+    component: () => import('../components/NewRoutine.vue')
   }
 ]
 

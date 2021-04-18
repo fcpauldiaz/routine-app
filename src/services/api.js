@@ -29,5 +29,12 @@ export default {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
+  },
+  deleteTask(routineId, taskId) {
+    return axios.delete(`${base_url}/routine/${routineId}/task/${taskId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
   }
 };

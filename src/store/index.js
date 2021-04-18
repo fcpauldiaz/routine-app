@@ -15,6 +15,9 @@ const store = new Vuex.Store({
       localStorage.setItem('user', JSON.stringify(payload.user));
       console.log(state);
     },
+    reloadUser(state, payload) {
+      state.user = payload.user;
+    }
   },
 });
 

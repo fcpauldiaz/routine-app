@@ -2,7 +2,7 @@
   <div>
     <div v-for="(task, index) in tasks" :key="index">
       <h5 class="inline">Task {{ index + 1 }}</h5>
-      <button type="button" class="btn btn-sm inline outline-red mb-2">
+      <button type="button" class="btn btn-sm inline outline-red mb-2" v-on:click="removeTask(task, index)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -28,11 +28,27 @@
 
 <script>
 import Task from './Task';
+import api from "@/services/api";
+
 export default {
   components: {
     Task,
   },
-  props: ['tasks'],
+  props: ['tasks', 'routine'],
+  methods: {
+    removeTask(task, index) {
+      console.log(task);
+      if (task._id) {
+        api
+          .deleteTask(this.routine.id, task._id)
+          .then(() => {
+            this.$router.push({ name: 'routine-main' });
+          });
+      } else {
+        this.$emit('removeTask', index);
+      }
+    }
+  }
 };
 </script>
 
