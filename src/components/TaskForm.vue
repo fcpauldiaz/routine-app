@@ -2,7 +2,7 @@
   <div>
     <div class="form-group">
       <label>Time</label>
-      <input type="datetime-local" v-model="time" class="form-control form-control-lg" />
+      <input type="time" v-model="time" class="form-control form-control-lg" />
     </div>
     <div class="form-group">
       <label>Type</label>
